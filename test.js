@@ -7,24 +7,47 @@ const weather = async (url) => {
         console.log(data);
         // return data;
 
-        const { main, name, weather, wind } = data;
+        const { main, name, weather, sys } = data;
 
         const temp = ((main.temp) - 273).toFixed(2);
+        const feelsLike = ((main.feels_like) - 273).toFixed(2);
+
+        let sunrise = sys.sunrise;
+        let sunset = sys.sunset;
+
+        let sunRiseDate = new Date(sunrise*1000);
+        let sunRiseHours = sunRiseDate.getHours()%12||12;
+        let sunRiseMinutes = sunRiseDate.getMinutes();
+        let sunRise = `${sunRiseHours}: ${sunRiseMinutes} A.M`;
+
+        let sunSetDate = new Date(sunset*1000);
+        let sunSetHours = sunSetDate.getHours()%12||12;
+        let sunSetMinutes = sunSetDate.getMinutes();
+        let sunSet = `${sunSetHours}: ${sunSetMinutes} P.M`;
+
+
+
 
         const conatiner = document.getElementById('weather');
         const div = document.createElement('div');
         div.classList = '';
-        // const h1= document.createElement('h1');
-        // h1.innerText = `${name}`
+        
         div.innerHTML = `
-            <h4 class="center">Location = ${name}</h4>
+            <h3 class="center">Location = ${name}</h3>
             <div class="flex">${weather[0].main === 'Clear' ? '<img class="weather-icon" src="images/sun.jpg">' : `${weather[0].main === 'Rain' ? '<img class="weather-icon" src="images/cloud.jpg">' : '<img class="weather-icon" src="images/sunCloud.jpg">'}`}
             
             <div>
                 <h3>Temperature = ${temp} °C</h3>
-                <h1>Weather = ${weather[0].main}</h1>
+                <h3>Feels like = ${feelsLike} °C</h3>
+                <h1 class="text-size">Weather = ${weather[0].main}</h1>
             </div>
-            
+            </div>
+
+            <h1 class="center">Description : ${weather[0].description} </h1>
+
+            <div class="center">
+                <h2> Sun rise = ${sunRise}<h2>
+                <h2> Sun set = ${sunSet}<h2>
             </div>
             
         `

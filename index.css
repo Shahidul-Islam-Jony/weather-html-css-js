@@ -6,6 +6,8 @@
     background:linear-gradient(rgba(0, 85, 255, 0.484),rgba(33, 178, 171, 0.151));
     min-height: 350px;
     margin: 0 auto;
+    padding: 15px;
+    border-radius: 20px;
 }
 .weather-icon{
     width: 100px;
@@ -15,4 +17,25 @@
 .flex{
     display: flex;
     justify-content: space-between;
+}
+
+.text-size{
+    font-size: 32px;
+}
+
+@media screen and (max-width: 570px) {
+    .weather{
+        width: 320px;
+        min-height: 400px;
+        padding: 5px;
+    }
+    .text-size{
+        font-size: 20px;
+    }
+
+    .weather-icon{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
 }
