@@ -1,0 +1,18 @@
+.center{
+    text-align: center;
+}
+.weather{
+    width: 400px;
+    background:linear-gradient(rgba(0, 85, 255, 0.484),rgba(33, 178, 171, 0.151));
+    min-height: 350px;
+    margin: 0 auto;
+}
+.weather-icon{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
